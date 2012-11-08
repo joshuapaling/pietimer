@@ -35,7 +35,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         seconds: 10,
         color: 'rgba(255, 255, 255, 0.8)',
         height: null,
-        width: null
+        width: null,
+        growingPie: false
     };
 
     // Internal constants
@@ -85,6 +86,13 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                 this.is_paused = true;
             }
         },
+        
+        reset: function () {
+            clearInterval(this.interval_id);
+            this.is_paused = true;
+            this.current_value = 0;
+            this.canvas.width = this.settings.width; // Clear canvas.
+        },
 
         run_timer: function () {
             if (this.canvas.getContext) {
@@ -123,7 +131,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                         radius,
                         start - this.current_value * PI_BY_180,
                         start,
-                        false
+                        this.settings.growingPie
                     );
 
                     ctx.closePath();

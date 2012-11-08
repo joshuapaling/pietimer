@@ -17,7 +17,8 @@
 			seconds: 10,
 			color: 'rgba(0, 0, 0, 0.8)',
 			height: 100,
-			width: 100
+			width: 100,
+			growingPie: true
 		},
 		function(){
 			$('.boom').show('slow');
@@ -30,6 +31,11 @@
 		});
 		$('a#pause').click(function(){
 			$('#demo').pietimer('pause');
+			return false;
+		});
+		
+		$('a#reset').click(function(){
+			$('#demo').pietimer('reset');
 			return false;
 		});
 		
@@ -47,7 +53,8 @@
 	<h2>Demo</h2>
 	<p><a href="#" id="start" class="btn">Start Timer</a></p>
 	<p><a href="#" id="pause" class="btn">Pause Timer</a></p>
-						
+	<p><a href="#" id="reset" class="btn">Reset Timer</a></p>
+	
 	<p id="demo" style="height: 150px;"></p>
 						
 	<h3 class="boom">Boom!</h3>
